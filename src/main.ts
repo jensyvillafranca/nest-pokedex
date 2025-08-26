@@ -8,9 +8,14 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     }),
   );
   app.setGlobalPrefix('api/v2');
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT!);
+  console.log(`App corriendo en puerto ${process.env.PORT}`);
 }
 bootstrap();
